@@ -7,6 +7,7 @@ public:
             for(int j=0;j<m;++j)
                 mr[i]=max(mr[i],grid[i][j]),mc[j]=max(mc[j],grid[i][j]);
         
+        
         int ans=0;
         for(int i=0;i<n;++i)
             for(int j=0;j<m;++j)
