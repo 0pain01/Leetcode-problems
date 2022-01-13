@@ -12,9 +12,6 @@ class Solution {
 public:
     ListNode* removeElements(ListNode* head, int val) {
         
-       if(head==NULL || ((head->next==NULL) && (head->val!=val)))
-            return head;
-        
         struct ListNode *t = head;
         
         while(t!=NULL)
@@ -45,9 +42,7 @@ public:
                 temp=temp->next;
             }
         }
-        
-        if(head->val==val && head->next==NULL)
-            return NULL;
+
             
         return head;
     }
