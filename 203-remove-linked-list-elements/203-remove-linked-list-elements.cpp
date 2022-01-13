@@ -12,19 +12,16 @@ class Solution {
 public:
     ListNode* removeElements(ListNode* head, int val) {
         
-        struct ListNode *t = head;
-        
-        while(t!=NULL)
+        while(head!=NULL)
         {
-            if(t->val==val)
+            if(head->val==val)
             {
-                t=t->next;
+                head=head->next;
             }
             else
                 break;
         }
-        
-        head=t;
+
         
         if(head==NULL || ((head->next==NULL) && (head->val!=val)))
             return head;
