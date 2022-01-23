@@ -1,5 +1,6 @@
 class Solution {
 public:
+    
     void helper(int beg, int n ,int k, vector<vector<int>>&res,vector<int>&ans)
     {
         if(ans.size()==k){
