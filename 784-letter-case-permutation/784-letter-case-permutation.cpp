@@ -1,35 +1,31 @@
 class Solution {
 public:
     
-    void helper(int idx,string &s, int n , set<string> &s1)
+    void helper(int idx,string &s, int n , vector<string> &res)
     {
-        if(idx>=n)
-            return;
+        res.push_back(s);
         
-        if(s[idx]>='a'&&s[idx]<='z')
-            s[idx]=s[idx]-32;
-        s1.insert(s);
-        helper(idx+1,s,n,s1);
-        
-        if(s[idx]>='A'&&s[idx]<='Z')
-            s[idx]=s[idx]+32;
-        s1.insert(s);
-        helper(idx+1,s,n,s1);
-        
+        for(int i=idx;i<n;i++)
+        {
+            if(isdigit(s[i])) continue;
+            
+            if(isupper(s[i])) s[i]=tolower(s[i]);
+            else s[i]=toupper(s[i]);
+            
+            helper(i+1,s,n,res);
+            
+            if(islower(s[i])) s[i]=toupper(s[i]);
+            else s[i]=tolower(s[i]);
+        }
     }
     
     vector<string> letterCasePermutation(string s) {
         vector<string> res;
-        set <string>s1;
+       
         int n = s.length();
         
-        helper(0,s,n,s1);
-        
-        for(auto it=s1.begin();it!=s1.end();it++)
-        {
-            res.push_back(*it);
-        }
-        
+        helper(0,s,n,res);
+  
         return res;
     }
 };
