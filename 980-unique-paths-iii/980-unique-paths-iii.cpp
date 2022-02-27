@@ -2,13 +2,13 @@ class Solution {
 public:
     int dx[4]={-1,0,1, 0};
     int dy[4]={ 0,1,0,-1};
-    void solver(int i,int j,int endi,int endj,int m,int n,int cnt,int &ans,vector<vector<int>>grid)
+    void solver(int i,int j,int cnt,int &ans,vector<vector<int>>grid)
     {
         
-        if(i<0 || j<0 || i>=m|| j>=n || grid[i][j]==-1)
+        if(i<0 || j<0 || i>=grid.size()|| j>=grid[0].size() || grid[i][j]==-1)
             return;
         
-        if(cnt==0 && i==endi && j==endj)
+        if(cnt==0 && grid[i][j]==2)
         {
             ans=ans+1;
             return;
@@ -17,7 +17,7 @@ public:
         for(int k=0;k<4;k++)
         {
             grid[i][j]=-1;
-            solver(i+dx[k],j+dy[k],endi,endj,m,n,cnt-1,ans,grid);
+            solver(i+dx[k],j+dy[k],cnt-1,ans,grid);
             grid[i][j]=0;
         }
         
@@ -44,7 +44,7 @@ public:
      
         cnt=cnt+1;
         int ans=0;
-        solver(starti,startj,endi,endj,m,n,cnt,ans,grid);
+        solver(starti,startj,cnt,ans,grid);
         
         return ans;
     }
