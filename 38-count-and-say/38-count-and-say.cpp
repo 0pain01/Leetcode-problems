@@ -7,10 +7,6 @@ public:
         {   
             if(i==1)
                 s="1";
-            else if(i==2)
-                s="11";
-            else if(i==3)
-                s="21";
             else
             {
                 int j;
