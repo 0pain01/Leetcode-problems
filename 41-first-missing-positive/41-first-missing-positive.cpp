@@ -10,13 +10,11 @@ public:
         int i=1;
         for(auto it:s)
         {
-            if(it < i)
-                continue;
-            else if(it==i)
+            if(it==i)
             {
                 i++;
             }
-            else
+            else if(it>i)
             {
                 break;
             }
