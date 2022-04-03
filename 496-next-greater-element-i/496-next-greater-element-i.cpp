@@ -16,9 +16,6 @@ public:
         for(int i=0;i<nums1.size();i++)
         {
             int j = search(nums2,nums1[i]);
-            cout<<j<<endl;
-         
-    
             for(int k=j;k<nums2.size();k++)
             {
                 if(nums2[k]>nums1[i])
