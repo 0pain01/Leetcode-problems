@@ -1,46 +1,48 @@
 class Solution {
 public:
-    bool isPossible(vector<int>&nums, int mid, int m)
-{
-    int sub_arr = 1;
-    int sum = 0;
-    for(int i = 0; i < nums.size(); i++)
+    bool isValid(vector<int>A,int N,int M,int mid)
     {
-        sum += nums[i];
-        if(sum > mid)
+        int sum=0;
+        int cnt=1;
+        for(int i=0;i<N;i++)
         {
-            sub_arr++;
-            sum = nums[i];
+            sum+=A[i];
+            if(sum>mid)
+            {
+                cnt++;
+                sum=A[i];
+            }
         }
-    }
-    return (sub_arr <= m);
-}
-    
-    
-int splitArray(vector<int>& nums, int m)
-{
-    int maxi = INT_MIN, sum = 0;
-    for(int i = 0; i < nums.size(); i++)
-    {
-        sum += nums[i];
-        maxi = max(maxi, nums[i]);
-    }
-    if(m == nums.size()) return maxi;
-    int ans = 0;
-    int low = maxi, high = sum;
-    while(low <= high)
-    {
-        int mid = low + (high-low) / 2;
-        if(isPossible(nums, mid, m) == true)
-        {
-            ans = mid;
-            high = mid-1;
-        }
+        if(cnt>M)
+            return false;
         else 
-        {
-            low = mid+1;
-        }
+            return true;
     }
-    return ans;
-}
+    
+    int splitArray(vector<int>& nums, int m)
+    {
+        int n = nums.size();
+        if(n<m)
+            return -1;
+        
+        int res=-1;
+        int start = *max_element(nums.begin(),nums.end());
+        int end = accumulate(nums.begin(),nums.end(),0);
+        
+        while(start<=end)
+        {
+            int mid = start + (end-start)/2;
+            if(isValid(nums,n,m,mid))
+            {
+                res=mid;
+                end=mid-1;
+            }
+            else
+            {
+                start=mid+1;
+            }
+        }
+        
+        return res;
+    }
 };
