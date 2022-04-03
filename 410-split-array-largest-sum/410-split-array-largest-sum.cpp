@@ -1,5 +1,6 @@
 class Solution {
 public:
+    // same as allocate pages to the student problem
     bool isValid(vector<int>A,int N,int M,int mid)
     {
         int sum=0;
