@@ -76,17 +76,14 @@ public:
                 {
                     if(j==0)
                     {
-                        cout<<"1"<<endl;
                         x=board[i][j+1]+board[i+1][j+1]+board[i+1][j];
                     }
                     else if(j==m-1)
                     {
-                        cout<<"2"<<endl;
                         x=board[i][j-1]+board[i+1][j-1]+board[i+1][j];
                     }
                     else
                     {
-                        cout<<"3"<<endl;
                         x=board[i][j+1]+board[i+1][j+1]+board[i+1][j]+board[i][j-1]+board[i+1][j-1];
                         
                     }
@@ -96,12 +93,10 @@ public:
                 {
                     if(i==n-1)
                     {
-                        cout<<"4"<<endl;
                         x=board[i][j+1]+board[i-1][j]+board[i-1][j+1];
                     }
                     else
                     {
-                        cout<<"5"<<endl;
                         x=board[i-1][j]+board[i-1][j+1]+board[i][j+1]+board[i+1][j+1]+board[i+1][j];
                     }
                     temp[i][j]=solver(board[i][j],x);
@@ -110,28 +105,23 @@ public:
                 {
                     if(i==n-1)
                     {
-                        cout<<"6"<<endl;
                         x=board[i][j-1]+board[i-1][j]+board[i-1][j-1];
                     }
                     else
                     {
-                        cout<<"7"<<endl;
                         x=board[i-1][j]+board[i-1][j-1]+board[i][j-1]+board[i+1][j-1]+board[i+1][j];
                     }
                     temp[i][j]=solver(board[i][j],x);
                 }
                 else if(i==n-1)
                 {
-                    cout<<"8"<<endl;
                     x=board[i][j-1]+board[i-1][j-1]+board[i-1][j]+board[i-1][j+1]+board[i][j+1];
                     temp[i][j]=solver(board[i][j],x);
                 }
                 else
                 {
-                    cout<<"9"<<endl;
                     x=board[i][j-1]+board[i+1][j-1]+board[i-1][j]+board[i-1][j+1]+board[i][j+1]+
                         board[i+1][j+1]+board[i+1][j]+board[i-1][j-1];
-                    cout<<"x:"<<x<<endl;
                     temp[i][j]=solver(board[i][j],x);
                 }
             }
