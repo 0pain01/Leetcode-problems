@@ -11,24 +11,14 @@
  */
 class Solution {
 public:
-    void solver(TreeNode* root,int target,TreeNode* &sub)
-    {
-        if(!root)
-        {
-            return;
-        }
-        if(root->val==target)
-        {
-            sub=root;
-            return;
-        }
-        
-        solver(root->left,target,sub);
-        solver(root->right,target,sub);
-    }
     TreeNode* searchBST(TreeNode* root, int val) {
-        TreeNode *sub = NULL;
-        solver(root,val,sub);
-        return sub;
+        
+        if(root==NULL || root->val==val)
+            return root;
+        
+        if(val<root->val)
+            return searchBST(root->left,val);
+        else
+            return searchBST(root->right,val);
     }
 };
