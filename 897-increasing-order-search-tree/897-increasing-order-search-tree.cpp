@@ -12,29 +12,30 @@
 class Solution {
 public:
     vector<int>arr;
+    TreeNode *ans=NULL,*temp=NULL;
     void solver(TreeNode* root)
     {
         if(root==NULL)
             return;
         
         solver(root->left);
-        arr.push_back(root->val);
+    
+        if(ans==NULL)
+        {
+            ans = new TreeNode(root->val);
+            temp=ans;
+        }
+        else
+        {
+            temp->right = new TreeNode(root->val);
+            temp=temp->right;
+        }
+            
         solver(root->right);
     }
     
     TreeNode* increasingBST(TreeNode* root) {
         solver(root);
-
-        TreeNode *newR = new TreeNode(arr[0]);
-        TreeNode *ans=newR;
-        
-        for(int i=1;i<arr.size();i++)
-        {
-            TreeNode *temp = new TreeNode(arr[i]);
-            newR->right=temp;
-            newR=temp;
-        }
-        
         return ans;
     }
 };
