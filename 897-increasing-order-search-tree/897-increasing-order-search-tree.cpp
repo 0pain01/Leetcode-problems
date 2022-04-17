@@ -17,15 +17,14 @@ public:
         if(root==NULL)
             return;
         
-        arr.push_back(root->val);
         solver(root->left);
+        arr.push_back(root->val);
         solver(root->right);
     }
     
     TreeNode* increasingBST(TreeNode* root) {
         solver(root);
-        sort(arr.begin(),arr.end());
-        
+
         TreeNode *newR = new TreeNode(arr[0]);
         TreeNode *ans=newR;
         
