@@ -1,11 +1,11 @@
 class MyHashSet {
 public:
-    vector<int>mp=vector<int>(1000001,0);
+    vector<bool>mp=vector<bool>(1000001,false);
     MyHashSet() {
     }
     
     void add(int key) {
-        mp[key]++;
+        mp[key]=1;
     }
     
     void remove(int key) {
@@ -13,10 +13,7 @@ public:
     }
     
     bool contains(int key) {
-        if(mp[key]>=1)
-            return true;
-        else 
-            return false;
+        return mp[key];
     }
 };
 
