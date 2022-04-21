@@ -1,7 +1,6 @@
 class MyHashSet {
 public:
-    map<int,int>mp;
-    
+    vector<int>mp=vector<int>(1000001,0);
     MyHashSet() {
     }
     
@@ -10,7 +9,7 @@ public:
     }
     
     void remove(int key) {
-        mp.erase(key);
+        mp[key]=0;
     }
     
     bool contains(int key) {
