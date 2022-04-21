@@ -1,7 +1,8 @@
 class MyHashSet {
 public:
-    vector<bool>mp=vector<bool>(1000001,false);
+    bool mp[1000001];
     MyHashSet() {
+        memset(mp,false,sizeof(mp));
     }
     
     void add(int key) {
