@@ -33,6 +33,7 @@ public:
         vector <string> res;
         if(digits=="")
             return res;
+        
         string s="";
         solve(0,digits,res,s);
         
