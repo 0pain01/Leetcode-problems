@@ -1,6 +1,8 @@
 class Solution {
 public:
     bool hasAllCodes(string s, int k) {
+        ios_base::sync_with_stdio(0);
+        cin.tie(nullptr);
         set<string>st;
         if(s.size()<=k)
             return false;
