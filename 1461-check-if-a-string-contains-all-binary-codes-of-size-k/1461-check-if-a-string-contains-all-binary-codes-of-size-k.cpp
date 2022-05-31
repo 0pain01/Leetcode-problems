@@ -11,9 +11,6 @@ public:
             st.insert(t);
         }
         
-        if(st.size()==pow(2,k))
-            return true;
-        else 
-            return false;
+        return st.size() == pow(2, k) ? true : false;
     }
 };
