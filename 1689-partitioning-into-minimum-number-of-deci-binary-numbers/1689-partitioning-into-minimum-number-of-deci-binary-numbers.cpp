@@ -1,8 +1,7 @@
 class Solution {
 public:
     int minPartitions(string n) {
-        
-        int mx=INT_MIN;
+        int mx=0;
         for(int i=0;i<n.size();i++)
         {
             if(mx<(n[i]-'0'))
@@ -10,7 +9,6 @@ public:
                 mx=n[i]-'0';
             }
         }
-        
         return mx;
     }
 };
