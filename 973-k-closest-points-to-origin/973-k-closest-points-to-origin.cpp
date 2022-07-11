@@ -16,11 +16,7 @@ public:
         }
         
         sort(arr.begin(),arr.end(),solver);
-        
-        for(auto x:arr)
-        {
-            cout<<x.second<<" ";
-        }
+       
         vector<vector<int>>ans;
         
         for(int i=0;i<k;i++)
