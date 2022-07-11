@@ -10,7 +10,7 @@ public:
         vector<int>ans;
         for(int i=0;i<n;i++)
         {
-            if(mp[target-nums[i]]!=i && (mp[target-nums[i]]>0 && mp[target-nums[i]]<n))
+            if(mp[target-nums[i]]!=i && mp[target-nums[i]]>0)
             {
                 ans= {i,mp[target-nums[i]]};
                 break;
