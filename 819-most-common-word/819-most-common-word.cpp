@@ -19,17 +19,15 @@ public:
         
         while(ss>>w)
         {
-            //cout<<w<<" ";
             if(!mp1[w])
                 mp[w]++;
         }
 
-        
         int mx=INT_MIN;string word="";
-        
+
         for(auto x:mp)
         {
-            cout<<x.first<<" "<<x.second<<endl;
+        
             if(x.second>mx)
             {
                 mx=x.second;
