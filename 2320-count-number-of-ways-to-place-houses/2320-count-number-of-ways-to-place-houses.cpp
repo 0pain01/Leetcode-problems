@@ -12,6 +12,7 @@ public:
             res[i]=(res[i-1]+res[i-2])%mod;
         }
         int ans = (res[n-1]*res[n-1])%mod;
+        
         return ans;
         
     }
