@@ -15,12 +15,18 @@ public:
 
 			for (char c : word) 
             {
+                // it provides the iterator which have value greater than x in the vector
 				auto it = upper_bound (alpha[c - 'a'].begin (), alpha[c - 'a'].end (), x);
+                
+                //if that iterator is equal to the end then it means there is not such value and hence not found
 				if (it == alpha[c - 'a'].end ()) found = false;
+                
+                //if it found that value then it will store the position of it
 				else x = *it;
 			}
 
-			if (found) res++;
+			if (found) 
+                res++;
 		}
 
 		return res;
