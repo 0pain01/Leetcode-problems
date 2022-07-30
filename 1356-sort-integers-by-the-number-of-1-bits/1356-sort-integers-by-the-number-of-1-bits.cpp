@@ -1,10 +1,20 @@
 class Solution {
 public:
+    static int count1(int n)
+    {
+        int cnt=0;
+        while (n) 
+        {
+            cnt += n & 1;
+            n >>= 1;
+        }
+        return cnt;
+    }
     
     static bool solver(int &a,int &b)
     {
-        int countA = __builtin_popcount(a);
-        int countB = __builtin_popcount(b);
+        int countA = count1(a);
+        int countB = count1(b);
         return countA==countB ? a<b:countA<countB;
     }
     
