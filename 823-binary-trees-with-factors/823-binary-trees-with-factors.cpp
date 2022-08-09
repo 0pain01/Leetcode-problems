@@ -1,7 +1,7 @@
 class Solution {
 public:
     int numFactoredBinaryTrees(vector<int>& A) {
-        long res = 0, mod = pow(10, 9) + 7;
+        long res = 0, mod = 10e8+7;
         sort(A.begin(), A.end());
         unordered_map<int, long> dp;
         for (int i = 0; i < A.size(); ++i) {
