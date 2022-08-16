@@ -2,10 +2,9 @@ class Solution {
 public:
     void solve(vector<int>& nums,int i,int sum,int &maxi)
     {
-        // cout << maxi << " " << i << endl;
         if(i==nums.size())
         {
-            maxi=max(sum,maxi);
+            // maxi=max(sum,maxi);
             return;
         }
         sum=sum+nums[i];
@@ -13,10 +12,6 @@ public:
         {
             sum=nums[i];
         }
-//         else
-//         {
-            
-//         }
         maxi=max(sum,maxi);
         solve(nums,i+1,sum,maxi);
     }
