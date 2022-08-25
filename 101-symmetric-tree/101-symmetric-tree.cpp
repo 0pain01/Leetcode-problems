@@ -9,24 +9,19 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-
 class Solution {
 public:
-    bool solver(TreeNode* l,TreeNode *r)
+    bool solver(TreeNode* x ,TreeNode* y)
     {
-        if(!l && !r)
-            return true;
+        if(!x || !y){
+            return x==y;
+        }
         
-        if((!l&&r) || (l&&!r))
-            return false;
-        
-        if(l->val!=r->val)
-            return false;
-        
-        return solver(l->left,r->right) && solver(l->right,r->left);
+        return x->val==y->val and solver(x->left,y->right) and (solver(x->right,y->left));
     }
     
     bool isSymmetric(TreeNode* root) {
+        
         return solver(root->left,root->right);
     }
 };
