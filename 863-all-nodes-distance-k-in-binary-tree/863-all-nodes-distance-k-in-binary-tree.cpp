@@ -1,72 +1,67 @@
-class Graph {
-  
-    unordered_map<TreeNode*, list<TreeNode*> > adjList;
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
 public:
-    
-    void addEdge(TreeNode* u, TreeNode* v) {
-        adjList[u].push_back(v);
-        adjList[v].push_back(u);
+    void pre(TreeNode* root,map<TreeNode*,TreeNode*>&mp)
+    {
+        if(root==NULL)
+            return;
+        
+        if(root->left) 
+        {
+            mp[root->left]=root;
+            pre(root->left,mp);
+        }
+        if(root->right) 
+        {
+            mp[root->right]=root;
+            pre(root->right,mp);
+        }
     }
     
-    vector<int> bfsSSSP(TreeNode* src, int k) {
-        unordered_map<TreeNode*, int> distance;
-        unordered_map<TreeNode*, bool> visited;
+    vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
+        map<TreeNode*,TreeNode*>mp;
+        map<TreeNode*,bool>vis;
+        pre(root,mp);
+        vector<int>ans;
+        queue<pair<TreeNode*,int>>q;
+        q.push({target,0});
         
-        
-        queue<TreeNode*> q;
-        q.push(src);
-        visited[src] = true;
-        distance[src] = 0;
-        
-        while(!q.empty()) {
-            TreeNode* f = q.front();
+        while(!q.empty())
+        {
+            auto x = q.front();
+            vis[x.first]=true;
             q.pop();
             
-            for(auto &i:adjList[f]) {
-                if(!visited[i]) {
-                    visited[i] = true;
-                    distance[i] = distance[f] + 1;
-                    q.push(i);
+            if(x.second==k)
+            {
+                ans.push_back(x.first->val);
+            }
+            else
+            {
+                if(x.first->left and vis[x.first->left]==false)
+                {
+                    q.push({x.first->left,x.second+1});
+                }
+                if(x.first->right and vis[x.first->right]==false)
+                {
+                    q.push({x.first->right,x.second+1});
+                }
+                if(mp.find(x.first)!=mp.end() and vis[mp[x.first]]==false)
+                {
+                    q.push({mp[x.first],x.second+1});
                 }
             }
             
         }
-        
-        vector<int> ans;
-        for(auto &i:distance) {
-            if(i.second==k){
-                ans.push_back(i.first->val);
-            }
-        }
-        
-        
         return ans;
-        
-    }
-    
-};
-
-
-class Solution {
-public:
-    void preOrder(Graph &g, TreeNode* root) {
-        if(!root||!root->left and !root->right)
-            return;
-        
-        if(root->left)
-            g.addEdge(root,root->left);
-        if(root->right)
-            g.addEdge(root,root->right);
-        
-        preOrder(g,root->left);
-        preOrder(g,root->right);
-    }
-    
-    vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
-        Graph g;
-        // addEdge(g,root);
-        preOrder(g,root);
-        return g.bfsSSSP(target,k);
         
     }
 };
