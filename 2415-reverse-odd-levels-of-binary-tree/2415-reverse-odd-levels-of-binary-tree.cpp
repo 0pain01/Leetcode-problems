@@ -14,7 +14,7 @@ public:
     void solver(TreeNode *l,TreeNode *r,int lev)
     {
         if(!l and !r)return;
-        if(lev%2==0)
+        if(lev%2!=0)
             swap(l->val,r->val);
         
         solver(l->left,r->right,lev+1);
@@ -22,8 +22,8 @@ public:
     }
     
     TreeNode* reverseOddLevels(TreeNode* root) {
-        int l =0;
-        solver(root->left,root->right,l);
+        int lev =1;
+        solver(root->left,root->right,lev);
         return root;
     }
 };
