@@ -13,12 +13,9 @@ class Solution {
 public:
     void solver(TreeNode *l,TreeNode *r,int lev)
     {
-        
+        if(!l and !r)return;
         if(lev%2==0)
             swap(l->val,r->val);
-        
-        if(!l->right and !l->left)return;
-        if(!r->right and !r->left)return;
         
         solver(l->left,r->right,lev+1);
         solver(l->right,r->left,lev+1);
@@ -26,7 +23,6 @@ public:
     
     TreeNode* reverseOddLevels(TreeNode* root) {
         int l =0;
-        if(!root  or !root->left or !root->right)return root;
         solver(root->left,root->right,l);
         return root;
     }
