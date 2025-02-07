@@ -6,16 +6,16 @@ public:
             return;
         }
 
-        if(idx==candidates.size()||target<0)
+        if(target<0)
             return;
 
-
-        arr.push_back(candidates[idx]);
-        solver(idx,candidates,target-candidates[idx],arr,ans);
-        arr.pop_back();
-        solver(idx+1,candidates,target,arr,ans);
-        
+        for(int i=idx;i<candidates.size();i++){
+            arr.push_back(candidates[i]);
+            solver(i,candidates,target-candidates[i],arr,ans);
+            arr.pop_back();
+        }
     }
+        
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
         vector<vector<int>>ans;
         vector<int>arr;
