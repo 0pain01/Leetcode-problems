@@ -14,6 +14,7 @@ public:
             cnt+=mp[arr[i]];
             mp[arr[i]]++;
         }
-    return  (n*(n-1))/2 -cnt;
+        long long total_pairs = (n*(n-1))/2;
+    return  total_pairs -cnt;
     }
 };
