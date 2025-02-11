@@ -1,16 +1,13 @@
 class Solution {
 public:
     string removeOccurrences(string s, string part) {
-    int i=0;
-    while(i<s.size()){
-        if(s.substr(i,part.size())==part){
-            s.erase(i,part.size());
-            i=0;
+    string result;
+    for (char c : s) {
+        result.push_back(c); 
+        if (result.size() >= part.size() && result.substr(result.size() - part.size()) == part) {
+            result.erase(result.size() - part.size()); 
         }
-        else{
-            i++;
-        }
-    }    
-    return s;
+    }
+    return result;
     }
 };
