@@ -14,7 +14,7 @@ public:
             pq.pop();
             long b = pq.top();
             pq.pop();
-            long oper = (a*2)+b;
+            long oper = (a<<1)+b;
             pq.push(oper);
             cnt++;
         }
