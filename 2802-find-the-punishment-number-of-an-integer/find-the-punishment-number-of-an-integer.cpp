@@ -1,47 +1,24 @@
 class Solution {
 public:
-bool findPartitions(int startIndex, int sum, string stringNum, int target,
-                        vector<vector<int>>& memo) {
-        
-        if (startIndex == stringNum.size()) {
-            return sum == target;
+bool partition(string& s, int l, int r, int target) {
+        if (l>r) return target==0;  // all digits used and target is 0, it's valid.
+        int x=0;
+        for (int m=l; m<=r; m++) {
+            x=x*10+(s[m]-'0'); // stoi
+            if (x>target) break;  // Stop early
+            if (partition(s, m+1, r, target-x)) return 1;
         }
-
-        if (sum > target) return false;
-
-        if (memo[startIndex][sum] != -1) return memo[startIndex][sum];
-
-        bool partitionFound = false;
-
-        for (int currentIndex = startIndex; currentIndex < stringNum.size();
-             currentIndex++) {
-            string currentString =
-                stringNum.substr(startIndex, currentIndex - startIndex + 1);
-            int addend = stoi(currentString);
-
-           
-            partitionFound =
-                partitionFound || findPartitions(currentIndex + 1, sum + addend,
-                                                 stringNum, target, memo);
-            if (partitionFound == true) return true;
-        }
-
-        return memo[startIndex][sum] = partitionFound;
+        return 0;
     }
+
     int punishmentNumber(int n) {
-        int punishmentNum = 0;
-        for (int currentNum = 1; currentNum <= n; currentNum++) {
-            int squareNum = currentNum * currentNum;
-            string stringNum = to_string(squareNum);
-
-            vector<vector<int>> memoArray(stringNum.size(),
-                                          vector<int>(currentNum + 1, -1));
-
-        
-            if (findPartitions(0, 0, stringNum, currentNum, memoArray)) {
-                punishmentNum += squareNum;
-            }
+        int sum=0;
+        for (int i=1; i<= n; i++) {
+            int x=i*i;
+            string s=to_string(x);
+            if (partition(s, 0, s.size()-1, i)) 
+                sum+=x;
         }
-        return punishmentNum;
+        return sum;
     }
 };
