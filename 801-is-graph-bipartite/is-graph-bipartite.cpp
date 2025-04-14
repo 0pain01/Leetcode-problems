@@ -2,16 +2,13 @@ class Solution {
 public:
     vector<int>color;
     bool dfs(int i,int paint, vector<vector<int>>& graph){
-        if(color[i]==paint){
-            return false;
-        }
         color[i]=paint;
 
         for(auto it: graph[i]){
             if(color[it]==paint){
                 return false;
             }
-            if(color[it]==-1){
+            else if(color[it]==-1){
                 if(paint==0){
                     if(!dfs(it,1,graph))
                         return false;
