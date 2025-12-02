@@ -15,24 +15,23 @@ class Solution {
                 .toList();
 
         long sum = 0;
-        long sumSq = 0;
+        int n = ls.size();
+        long [] a = new long[n];
 
-        for (var entry : ls) {
-            int a = entry.getValue().length;
-            long f = (long) a * (a - 1) / 2; 
-
-            f %= mod;
-            sum = (sum + f) % mod;
-            sumSq = (sumSq + (f * f) % mod) % mod;
+        for (int i = 0; i < n; i++) {
+            long x = ls.get(i).getValue().length;
+            a[i] = (x * (x - 1) / 2) % mod;
+            sum = (sum + a[i]) % mod;
         }
 
+        long ans = 0;
 
-        long result = (sum * sum % mod - sumSq + mod) % mod;
+       
+        for (int i = 0; i < n; i++) {
+            sum = (sum - a[i] + mod) % mod;
+            ans = (ans + (a[i] * sum) % mod) % mod;
+        }
 
-
-        long inv2 = (mod + 1) / 2;
-        result = (result * inv2) % mod;
-
-        return (int) result;
+        return (int) ans;
     }
 }
