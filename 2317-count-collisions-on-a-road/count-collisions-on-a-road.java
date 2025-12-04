@@ -1,8 +1,5 @@
 class Solution {
 
-    // SSRSSRLRLSLLR SRSS R  L  R  RRRLLRRLSSRR
-    // SSSSSSSSSSSSS SSSS S  S  R  
-    // 0011123455678 8999 10 11 11
     public int countCollisions(String directions) {
         int collisions = 0;
         int cars = directions.length();
