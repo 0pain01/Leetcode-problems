@@ -1,6 +1,29 @@
 class Solution {
 
     public int countCollisions(String directions) {
+        
+        int n = directions.length();
+        int x=0,y=n-1;
+
+        while(x<n  && directions.charAt(x)=='L') x++;
+
+        while(y>=0 && directions.charAt(y)=='R') y--;
+        
+        int ans=0;
+        for(int i=x;i<=y;i++){
+            if(directions.charAt(i)!='S')
+                ans++;
+        }
+
+        return ans;
+    }
+
+
+
+    /*
+    
+
+    public int countCollisions(String directions) {
         int collisions = 0;
         int cars = directions.length();
         boolean prevCollision = false;
@@ -24,4 +47,6 @@ class Solution {
 
         return collisions;
     }
+    
+    */
 }
