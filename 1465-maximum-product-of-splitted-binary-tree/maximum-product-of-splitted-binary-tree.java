@@ -20,7 +20,6 @@ class Solution {
 
     public long treeSum(TreeNode root){
         if(root==null)return 0;
-
         return root.val + treeSum(root.left) + treeSum(root.right);
     }
 
@@ -31,8 +30,10 @@ class Solution {
         long right = dfs(root.right);
 
         long subSum = root.val + left + right;
+
+        //we know the total sum and using subsum we can get the other subset sum wihtout even traversing
         long product = subSum*(totalSum-subSum);
-        
+
         maxVal = Math.max(maxVal , product);
 
         return subSum;
