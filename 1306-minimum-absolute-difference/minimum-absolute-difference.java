@@ -12,7 +12,7 @@ class Solution {
 
         for(int i=1;i<n;i++){
             if(Math.abs(arr[i]-arr[i-1])==minDiff){
-                ans.add(new ArrayList<Integer>(Arrays.asList(arr[i-1],arr[i])));
+                ans.add(Arrays.asList(arr[i-1],arr[i]));
             }
         }
 
