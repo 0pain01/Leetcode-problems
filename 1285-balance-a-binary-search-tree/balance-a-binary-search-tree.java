@@ -27,7 +27,7 @@ class Solution {
         if(left > right)
             return null;
 
-        int mid = (left+right)/2;
+        int mid = left+(right-left)/2;
 
         TreeNode root = arr.get(mid);
 
