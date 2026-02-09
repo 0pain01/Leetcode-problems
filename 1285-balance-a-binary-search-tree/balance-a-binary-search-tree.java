@@ -14,22 +14,22 @@
  * }
  */
 class Solution {
-    private void dfs(TreeNode root, List<TreeNode> arr){
+    private void dfs(TreeNode root, List<Integer> arr){
         if(root==null)
             return;
 
         dfs(root.left,arr);
-        arr.add(root);
+        arr.add(root.val);
         dfs(root.right,arr);
     }
 
-    private TreeNode buildTree(List<TreeNode> arr, int left, int right){
+    private TreeNode buildTree(List<Integer> arr, int left, int right){
         if(left > right)
             return null;
 
         int mid = left+(right-left)/2;
 
-        TreeNode root = arr.get(mid);
+        TreeNode root = new TreeNode(arr.get(mid));
 
         root.left = buildTree(arr,left,mid-1);
         root.right = buildTree(arr,mid+1,right);
@@ -38,7 +38,7 @@ class Solution {
     }
 
     public TreeNode balanceBST(TreeNode root) {
-        List<TreeNode> arr = new ArrayList<TreeNode> ();
+        List<Integer> arr = new ArrayList<Integer> ();
         dfs(root,arr);
         int n = arr.size();
 
