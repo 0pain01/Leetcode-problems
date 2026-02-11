@@ -5,10 +5,7 @@ class KthLargest {
         this.k=k;
         this.pq= new PriorityQueue<>();
         for (int num : nums) {
-            pq.add(num);
-            if (pq.size() > k) {
-                pq.poll(); 
-            }
+            add(num);
         }
     }
     
