@@ -7,21 +7,13 @@ class Solution {
 
         for(int i = 0; i < nums.length; i++){
             if((nums[i] % 2 != 0)){
-                if(!reverse){
-                    reverse = true;
-                }
-                else{
-                    reverse = false;
-                }
+                reverse = (!reverse);
             }
+            
             if((i + 1) % 6 == 0){
-                if(!reverse){
-                    reverse = true;
-                }
-                else{
-                    reverse = false;
-                }
+                reverse = (!reverse);
             }
+
             if(!reverse){
                 player1 += nums[i];
             }
