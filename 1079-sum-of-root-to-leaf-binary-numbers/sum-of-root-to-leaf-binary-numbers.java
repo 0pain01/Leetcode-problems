@@ -14,12 +14,8 @@ class Solution {
     }
 
     public int sumRootToLeaf(TreeNode root) {
-
-        if(root.left == null && root.right == null)
-            return root.val;
             
         DFS(root , "");
-
         return result;
     }
 }
