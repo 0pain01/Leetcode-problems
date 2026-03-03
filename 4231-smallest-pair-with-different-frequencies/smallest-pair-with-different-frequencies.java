@@ -9,10 +9,6 @@ class Solution {
         boolean first = false;
         int firstElement = 0;
         int firstFreq = 0;
-        int secondElement = 0;
-        int secondFreq = 0;
-
-        boolean second = false;
 
         for (Map.Entry<Integer, Integer> entry : mp.entrySet()) {
             if(!first){
@@ -21,15 +17,10 @@ class Solution {
                 first = true;
             }
             else if(firstFreq != entry.getValue()){
-                secondElement = entry.getKey();
-                secondFreq = entry.getValue();
-                break;
+                return new int[]{firstElement, entry.getKey()};
             }
         }
-        if(secondElement == 0)
-            return new int []{-1,-1};
-            
-        return new int[]{firstElement, secondElement};
-
+        
+        return new int []{-1,-1};
     }
 }
