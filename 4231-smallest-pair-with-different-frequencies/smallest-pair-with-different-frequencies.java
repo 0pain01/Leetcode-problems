@@ -1,23 +1,17 @@
 class Solution {
     public int[] minDistinctFreqPair(int[] nums) {
-        Map<Integer,Integer> mp = new TreeMap<>();
+        TreeMap<Integer,Integer> mp = new TreeMap<>();
 
         for(int i = 0; i < nums.length;i++){
             mp.put(nums[i], mp.getOrDefault(nums[i], 0) + 1);
         }
 
-        boolean first = false;
-        int firstElement = 0;
-        int firstFreq = 0;
+        Map.Entry<Integer, Integer> firstEntry = mp.firstEntry();
+        mp.pollFirstEntry();
 
         for (Map.Entry<Integer, Integer> entry : mp.entrySet()) {
-            if(!first){
-                firstElement = entry.getKey();
-                firstFreq = entry.getValue();
-                first = true;
-            }
-            else if(firstFreq != entry.getValue()){
-                return new int[]{firstElement, entry.getKey()};
+            if(firstEntry.getValue() != entry.getValue()){
+                return new int[]{firstEntry.getKey(), entry.getKey()};
             }
         }
         
