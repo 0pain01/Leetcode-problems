@@ -11,14 +11,6 @@ class Solution {
             }
         }
 
-        System.out.println("row:");
-        for(int i = 0 ; i < mat.length; i++)
-            System.out.println(row[i]);
-        
-        System.out.println("col:");
-        for(int i = 0 ; i < mat[0].length; i++)
-            System.out.println(col[i]);
-
         int ans = 0;
 
         for(int i = 0 ; i < mat.length; i++){
