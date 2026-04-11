@@ -1,35 +1,26 @@
 class Solution {
-    private int[][] solver(int [][] matrix, int idx, int jdx){
-        for(int i = 0; i < matrix[0].length; i++){
-            matrix[idx][i] = 0;
-        }
-
-        for(int i = 0; i < matrix.length; i++){
-            matrix[i][jdx] = 0;
-        }
-
-        return matrix;
-    }
-
     public void setZeroes(int[][] matrix) {
         int n = matrix.length;
         int m = matrix[0].length;
-        boolean [][] posZero = new boolean[n][m];
 
-        for(int i = 0; i < n; i++ ){
+        boolean[] rows = new boolean[n];
+        boolean[] cols = new boolean[m];
+
+        // Step 1: mark rows & cols
+        for(int i = 0; i < n; i++){
             for(int j = 0; j < m; j++){
                 if(matrix[i][j] == 0){
-                    posZero[i][j] = true;
+                    rows[i] = true;
+                    cols[j] = true;
                 }
-                else
-                    posZero[i][j] = false;
             }
-        } 
+        }
 
-        for(int i = 0; i < n; i++ ){
+        // Step 2: set zeroes
+        for(int i = 0; i < n; i++){
             for(int j = 0; j < m; j++){
-                if(posZero[i][j]==true){
-                    matrix = solver(matrix,i,j);
+                if(rows[i] || cols[j]){
+                    matrix[i][j] = 0;
                 }
             }
         }  
