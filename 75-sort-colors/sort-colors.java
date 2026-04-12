@@ -13,7 +13,7 @@ class Solution {
         }
         
         int i = 0;
-        while(i <n){
+
             while(i < n && zero > 0 ){
                 nums[i] = 0;
                 i++;
@@ -32,7 +32,5 @@ class Solution {
                 two--;
             }
 
-        }
-    
     }
 }
