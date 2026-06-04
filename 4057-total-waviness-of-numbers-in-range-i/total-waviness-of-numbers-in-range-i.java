@@ -3,19 +3,31 @@ class Solution {
         int count = 0;
 
         for (int i = num1; i <= num2; i++) {
-            count += waveCounter(String.valueOf(i));
+            count += waveCounter(i);
         }
 
         return count;
     }
 
-    private int waveCounter(String s) {
+    private int waveCounter(int n) {
+        if (n < 100) {
+            return 0;
+        }
+
+        int[] digits = new int[10]; 
+        int len = 0;
+
+        while (n > 0) {
+            digits[len++] = n % 10;
+            n /= 10;
+        }
+
         int cnt = 0;
 
-        for (int i = 1; i < s.length() - 1; i++) {
-            int prev = s.charAt(i - 1) - '0';
-            int curr = s.charAt(i) - '0';
-            int next = s.charAt(i + 1) - '0';
+        for (int i = len - 2; i >= 1; i--) {
+            int prev = digits[i + 1];
+            int curr = digits[i];
+            int next = digits[i - 1];
 
             if ((curr > prev && curr > next) ||
                 (curr < prev && curr < next)) {
