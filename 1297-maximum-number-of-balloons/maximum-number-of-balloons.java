@@ -15,9 +15,6 @@ class Solution {
                 n++;
         }
 
-        l = l % 2 == 0 ? l/2 : (l-1)/2;
-        o = o % 2 == 0 ? o/2 : (o-1)/2;
-
-        return Math.min(b,(Math.min(a,Math.min(l,Math.min(o,n)))));
+        return Math.min(b,(Math.min(a,Math.min(l/2,Math.min(o/2,n)))));
     }
 }
