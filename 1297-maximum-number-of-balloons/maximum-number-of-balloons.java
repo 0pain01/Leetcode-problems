@@ -2,16 +2,16 @@ class Solution {
     public int maxNumberOfBalloons(String text) {
         int b = 0, l = 0, a = 0, o = 0, n = 0;
 
-        for (int i = 0; i < text.length(); i++){
-            if(text.charAt(i)=='b') 
+        for (char ch: text.toCharArray()){
+            if(ch =='b') 
                 b++;
-            else if(text.charAt(i)=='a')    
+            else if(ch =='a')    
                 a++;
-            else if(text.charAt(i)=='l')
+            else if(ch =='l')
                 l++;
-            else if(text.charAt(i)=='o')
+            else if(ch =='o')
                 o++;
-            else if(text.charAt(i)=='n')
+            else if(ch =='n')
                 n++;
         }
 
