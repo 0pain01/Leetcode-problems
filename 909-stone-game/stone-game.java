@@ -1,34 +1,26 @@
 class Solution {
-    public boolean stoneGame(int[] piles) {
-        int alice = 0 , bob = 0;
-        int i = 0;
-        int j = piles.length-1;
 
-        int counter = 0;
-        while(i < j){
-            if(counter % 2 == 0){
-                if(piles[i] >= piles[j]){
-                    alice += piles[i];
-                    i++;
-                }
-                else{
-                    alice += piles[j];
-                    j--;
-                }
-            }
-            else{
-                if(piles[i] >= piles[j]){
-                    bob += piles[i];
-                    i++;
-                }
-                else{
-                    bob += piles[j];
-                    j--;
-                }
+    public boolean stoneGame(int[] piles) {
+        int n = piles.length;
+        int[][] dp = new int[n][n];
+
+        // Base case: one pile
+        for (int i = 0; i < n; i++) {
+            dp[i][i] = piles[i];
+        }
+
+        // Fill for lengths 2 to n
+        for (int len = 2; len <= n; len++) {
+            for (int i = 0; i + len - 1 < n; i++) {
+                int j = i + len - 1;
+
+                dp[i][j] = Math.max(
+                    piles[i] - dp[i + 1][j],
+                    piles[j] - dp[i][j - 1]
+                );
             }
         }
 
-
-        return alice > bob ? true :false;
+        return dp[0][n - 1] > 0;
     }
 }
